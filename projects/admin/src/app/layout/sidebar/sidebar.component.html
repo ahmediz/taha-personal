@@ -1,0 +1,16 @@
+<div class="h-[100dvh] fixed left-0 w-[300px] bg-slate-900">
+  <nav class="pt-[100px] text-white">
+    <ul class="px-5">
+      @for (link of navLinks(); track link.route) {
+      <li>
+        <a
+          [routerLink]="link.route"
+          class="px-5 py-3 block hover:bg-white/10 rounded-lg"
+          routerLinkActive="active"
+          >{{ link.title }}</a
+        >
+      </li>
+      }
+    </ul>
+  </nav>
+</div>

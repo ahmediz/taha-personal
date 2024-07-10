@@ -1,0 +1,20 @@
+<div class="flex items-center justify-between mb-10">
+  <h1 class="text-3xl">Pages</h1>
+  <app-button routerLink="/pages/add">Add New Page</app-button>
+</div>
+
+<div class="flex gap-5">
+  @for (page of pagesList$ |async; track page.id) {
+  <a
+    [routerLink]="['/pages/edit', page.id]"
+    class="block bg-white shadow-md rounded-lg p-5 min-w-[200px]"
+  >
+    <h2 class="text-xl">{{ page.title }}</h2>
+    <p class="text-slate-500">{{ page.description }}</p>
+    <div
+      [ngStyle]="{ backgroundColor: page.color }"
+      class="w-[100px] h-[20px] mt-5"
+    ></div>
+  </a>
+  }
+</div>

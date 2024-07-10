@@ -1,0 +1,16 @@
+@switch (type()) { @case ('textarea') {
+<textarea
+  [formControl]="formControl"
+  class="border border-black/10 p-3 rounded-lg w-full outline-none transition focus:border-green-500 resize-none"
+  [placeholder]="placeholder()"
+  rows="5"
+></textarea>
+} @default {
+<input
+  [type]="type()"
+  [formControl]="formControl"
+  class="border border-black/10 p-3 rounded-lg w-full outline-none transition min-h-[50px] focus:border-green-500"
+  [placeholder]="placeholder()"
+/>
+
+} }

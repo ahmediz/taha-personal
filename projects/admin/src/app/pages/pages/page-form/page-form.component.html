@@ -1,0 +1,28 @@
+<div class="flex items-center justify-between mb-10">
+  <h1 class="text-3xl">
+    @if (this.page()) {
+      Edit {{ this.page().title }}
+    } @else {
+      Add New Page
+    }
+  </h1>
+</div>
+
+@if (formReady) {
+<form [formGroup]="pageForm" class="flex flex-col gap-5">
+  <app-input-field
+    formControlName="title"
+    placeholder="Enter Page Title"
+  ></app-input-field>
+  <app-input-field
+    formControlName="description"
+    type="textarea"
+    placeholder="Enter Page Description"
+  ></app-input-field>
+  <app-input-field formControlName="color" type="color"></app-input-field>
+
+  <app-button (click)="submit()">
+    @if (this.page()) { Save } @else { Add }
+  </app-button>
+</form>
+}

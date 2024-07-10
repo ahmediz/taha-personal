@@ -16,8 +16,8 @@ type NavLink = {
 export class SidebarComponent {
   navLinks = signal<NavLink[]>([
     {
-      title: 'Projects',
-      route: '/projects',
+      title: 'Pages',
+      route: '/pages',
     }
   ]);
 }

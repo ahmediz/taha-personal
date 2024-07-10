@@ -1,0 +1,22 @@
+<div class="h-[100dvh] w-full flex items-center justify-center">
+  <div class="bg-white shadow-md rounded-lg p-10 flex flex-col text-center">
+    <h1 class="text-3xl mb-5 flex flex-col"><span>👋</span>Hello, Taha</h1>
+    <form class="flex flex-col gap-5 min-w-[300px]" [formGroup]="loginForm">
+      <div>
+        <app-input-field
+          placeholder="Enter your email"
+          formControlName="email"
+        ></app-input-field>
+      </div>
+      <div>
+        <app-input-field
+          type="password"
+          placeholder="Enter your password"
+          formControlName="password"
+        ></app-input-field>
+      </div>
+
+      <app-button [disabled]="this.loginForm.invalid" (click)="submit()">Login</app-button>
+    </form>
+  </div>
+</div>

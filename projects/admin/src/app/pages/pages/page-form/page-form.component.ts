@@ -90,7 +90,11 @@ export class PageFormComponent {
   async submit(): Promise<void> {
     if (this.page()) {
       const docRef = doc(this.firestore, `pages/${this.pageId}`);
-      await updateDoc(docRef, this.pageForm.value);
+      const formValue = {
+        ...this.pageForm.value,
+        bgPatternImg: this.pageForm.value.bgPatternImg ? this.pageForm.value.bgPatternImg : this.page()?.bgPatternImg
+      }
+      await updateDoc(docRef, formValue);
       this.router.navigateByUrl('/pages');
     } else {
       const itemCollection = collection(this.firestore, 'pages');

@@ -8,7 +8,12 @@ import {
   orderBy,
   query,
 } from '@angular/fire/firestore';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import {
+  NavigationEnd,
+  NavigationStart,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { filter, map, Observable, switchMap, take, tap } from 'rxjs';
 type Page = {
@@ -42,22 +47,24 @@ export class AppComponent implements OnInit {
     autoplayHoverPause: true,
     navSpeed: 1000,
     navText: ['', ''],
-    items:1,
+    items: 1,
     nav: true,
   };
 
   ngOnInit(): void {
     this.router.events
       .pipe(
-        filter((e) => e instanceof NavigationEnd),
+        filter((e) => e instanceof NavigationStart),
         take(1),
         switchMap((_) => {
           const auth = getAuth();
           return signInAnonymously(auth);
         })
       )
-      .subscribe((res) => console.log(res));
+      .subscribe((_) => this.getData());
+  }
 
+  getData(): void {
     const itemCollection = collection(this.firestore, 'pages');
     const q = query(itemCollection, orderBy('order'));
     this.pagesList$ = collectionData(q, {

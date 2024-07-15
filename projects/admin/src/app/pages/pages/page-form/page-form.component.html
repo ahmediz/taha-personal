@@ -1,15 +1,20 @@
 <div class="flex items-center justify-between mb-10">
   <h1 class="text-3xl">
-    @if (this.page()) {
-      Edit {{ this.page().title }}
-    } @else {
-      Add New Page
-    }
+    @if (this.page()) { Edit {{ this.page()?.title }}
+    } @else { Add New Page }
   </h1>
 </div>
 
 @if (formReady) {
 <form [formGroup]="pageForm" class="flex flex-col gap-5">
+  @if (pageForm.value.bgPatternImg || this.page()?.bgPatternImg ) {
+  <img
+    [src]="pageForm.value.bgPatternImg || this.page()?.bgPatternImg"
+    class="h-[200px] object-contain"
+    alt=""
+  />
+  }
+  <app-input-field formControlName="bgPatternImg" type="file"></app-input-field>
   <app-input-field
     formControlName="title"
     placeholder="Enter Page Title"
@@ -19,7 +24,14 @@
     type="textarea"
     placeholder="Enter Page Description"
   ></app-input-field>
-  <app-input-field formControlName="color" type="color"></app-input-field>
+  <app-input-field
+    formControlName="color"
+    placeholder="Enter Primary Color"
+  ></app-input-field>
+  <app-input-field
+    formControlName="darkerColor"
+    placeholder="Enter Secondary Color"
+  ></app-input-field>
 
   <app-button (click)="submit()">
     @if (this.page()) { Save } @else { Add }

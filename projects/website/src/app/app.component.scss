@@ -1,0 +1,84 @@
+:host {
+  ::ng-deep {
+    .owl-nav {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      padding: 0 50px;
+
+      .owl-prev,
+      .owl-next {
+        width: 100px;
+        height: 100px;
+        background: transparent url("../assets/images/left-arrow.png") no-repeat !important;
+        background-size: contain !important;
+      }
+      .owl-next {
+        transform: scaleX(-1);
+      }
+    }
+  }
+}
+
+.page {
+  img {
+    width: 280px;
+    margin-bottom: -30px;
+  }
+  figcaption {
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+  }
+
+  p {
+    font-size: 16px;
+    max-width: 600px;
+  }
+}
+
+.sticker {
+  display: inline-grid;
+  grid-template-areas: "text";
+  font-family: "Kansas";
+  font-weight: 900;
+  font-size: 42px;
+
+  span {
+    background: black;
+    -webkit-background-clip: text;
+  }
+
+  & > *,
+  &::before,
+  &::after {
+    grid-area: text;
+  }
+
+  &::before,
+  &::after {
+    content: attr(data-text);
+    color: #fff;
+  }
+
+  &::before {
+    -webkit-text-stroke: 0.46em white;
+  }
+
+  &::after {
+    z-index: -2;
+  }
+
+  &--lg {
+    font-size: 105px;
+    margin-top: -45px;
+    text-transform: uppercase;
+    &::before {
+      -webkit-text-stroke: 0.3em white;
+    }
+  }
+}

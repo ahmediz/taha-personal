@@ -5,7 +5,18 @@
   [placeholder]="placeholder()"
   rows="5"
 ></textarea>
-} @default {
+} @case ('file') {
+
+<input
+  [type]="type()"
+  [formControl]="formControl"
+  (change)="upload($event)"
+  class="border border-black/10 p-3 rounded-lg w-full outline-none transition min-h-[50px] focus:border-green-500"
+  [placeholder]="placeholder()"
+/>
+@if (uploadPercent | async; as percent) { @if (percent.progress < 100) {
+<span>{{ percent.progress.toFixed(0) }}</span>
+} } } @default {
 <input
   [type]="type()"
   [formControl]="formControl"

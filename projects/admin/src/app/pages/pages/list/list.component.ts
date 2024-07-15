@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import {
   collection,
   collectionData,
+  deleteDoc,
   doc,
   Firestore,
   orderBy,
@@ -38,8 +39,8 @@ export class ListComponent {
     const dropped = event.data;
     let moved = this.pagesList()[event.index!];
 
-    if(!moved) {
-      moved = this.pagesList()[this.pagesList().length - 1]
+    if (!moved) {
+      moved = this.pagesList()[this.pagesList().length - 1];
     }
 
     moved.order = dropped.order;
@@ -69,5 +70,12 @@ export class ListComponent {
         tap((res) => this.pagesList.set(res))
       )
       .subscribe();
+  }
+
+  deletePage(ev: any, id: string): void {
+    ev.preventDefault();
+    ev.stopPropagation();
+    const docRef = doc(this.firestore, `pages/${id}`);
+    deleteDoc(docRef);
   }
 }

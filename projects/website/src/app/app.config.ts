@@ -1,5 +1,6 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -9,6 +10,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    importProvidersFrom([BrowserAnimationsModule]),
     provideFirebaseApp(() =>
       initializeApp({
         apiKey: 'AIzaSyBTWbVoIzT8VtC6mG0JQ3GIsz2f92CtB-I',

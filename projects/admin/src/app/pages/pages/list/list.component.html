@@ -15,9 +15,10 @@
     <h2 class="text-xl">{{ page.title }}</h2>
     <p class="text-slate-500">{{ page.description }}</p>
     <div
-      [ngStyle]="{ backgroundColor: page.color }"
-      class="w-[100px] h-[20px] mt-5"
+    [ngStyle]="{ backgroundColor: page.color }"
+    class="w-[100px] h-[20px] mt-5"
     ></div>
+    <app-button class="mt-10 block" color="danger" (click)="deletePage($event, page.id)">Delete</app-button>
   </a>
 
   }

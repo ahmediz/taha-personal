@@ -10,12 +10,14 @@ import {
 } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap, tap } from 'rxjs';
+import { switchMap } from 'rxjs';
 type Page = {
   id: string;
+  bgPatternImg: string;
   title: string;
   description: string;
   color: string;
+  darkerColor: string;
 };
 
 @Component({
@@ -29,9 +31,10 @@ export class PageFormComponent {
   fb = inject(FormBuilder);
   firestore = inject(Firestore);
   router = inject(Router);
-  page: Signal<Page>;
+  page: Signal<Page | null>;
   pageId: string;
   formReady: boolean;
+  hasFile: boolean;
 
   constructor() {
     this.page = toSignal(
@@ -58,16 +61,28 @@ export class PageFormComponent {
     let title;
     let description;
     let color;
+    let darkerColor;
 
     if (this.page) {
+      if (
+        this.page()?.bgPatternImg &&
+        typeof this.page()?.bgPatternImg == 'string'
+      ) {
+        this.hasFile = false;
+      } else {
+        this.hasFile = true;
+      }
       title = this.page()?.title;
       description = this.page()?.description;
       color = this.page()?.color;
+      darkerColor = this.page()?.darkerColor;
     }
     this.pageForm = this.fb.group({
+      bgPatternImg: ['', Validators.required],
       title: [title, Validators.required],
       description: [description, Validators.required],
       color: [color, Validators.required],
+      darkerColor: [darkerColor, Validators.required],
     });
   }
 

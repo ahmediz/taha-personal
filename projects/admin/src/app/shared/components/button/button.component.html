@@ -2,7 +2,8 @@
   type="button"
   [disabled]="disabled()"
   [routerLink]="routeLink() ? routeLink() : null"
-  class="bg-green-500 py-3 px-6 rounded-lg text-white hover:bg-green-600 transition-colors w-full disabled:opacity-50"
+  class="py-3 px-6 rounded-lg text-white transition-colors disabled:opacity-50"
+  [ngClass]="{'bg-green-500': color() === 'primary', 'bg-red-500': color() === 'danger'}"
 >
   <ng-content></ng-content>
 </button>

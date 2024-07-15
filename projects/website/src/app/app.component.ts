@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   router = inject(Router);
 
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,

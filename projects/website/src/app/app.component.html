@@ -23,14 +23,30 @@
       </li>
     </ul>
 
-    <a href="tel:+20 01006903773" class="font-bold">+20 01006903773</a>
+    <div>
+      <a
+        href="https://wa.me/00201006903773"
+        target="_blank"
+        class="flex items-center gap-2"
+      >
+        <img src="assets/images/whatsapp.png" class="h-[30px]" alt="" />
+        +20 01006903773
+      </a>
+      <a
+        href="mailto:taha.uiux@gmail.com"
+        class="ps-[40px] text-slate-500"
+        target="_blank"
+      >
+        taha.uiux&#64;gmail.com
+      </a>
+    </div>
   </div>
   <owl-carousel-o [options]="customOptions">
     @for (page of pagesList$ | async; track $index) {
     <ng-template carouselSlide>
       <div
         class="page relative h-[100dvh] w-full flex items-center justify-center overflow-hidden"
-        [ngStyle]="{ background: 'url('+ page.bgPatternImg +')' }"
+        [ngStyle]="{ background: 'url(' + page.bgPatternImg + ')' }"
       >
         <div>
           <svg
@@ -42,7 +58,6 @@
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
           >
-            <title>Left_Bottom</title>
             <g
               id="Left_Bottom"
               stroke="none"
@@ -72,7 +87,6 @@
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
           >
-            <title>Left-Top</title>
             <g
               id="Left-Top"
               stroke="none"
@@ -108,7 +122,6 @@
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
           >
-            <title>Right</title>
             <g
               id="Right"
               stroke="none"

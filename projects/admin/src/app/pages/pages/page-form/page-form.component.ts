@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import {
   addDoc,
   collection,
+  collectionData,
   doc,
   docData,
   Firestore,
@@ -10,7 +11,7 @@ import {
 } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { firstValueFrom, map, switchMap, take, tap } from 'rxjs';
 type Page = {
   id: string;
   bgPatternImg: string;
@@ -92,7 +93,14 @@ export class PageFormComponent {
       await updateDoc(docRef, this.pageForm.value);
       this.router.navigateByUrl('/pages');
     } else {
-      await addDoc(collection(this.firestore, 'pages'), this.pageForm.value);
+      const itemCollection = collection(this.firestore, 'pages');
+      const pagesLength = await firstValueFrom(
+        collectionData(itemCollection).pipe(map((res) => res.length))
+      );
+      await addDoc(collection(this.firestore, 'pages'), {
+        ...this.pageForm.value,
+        order: pagesLength + 1,
+      });
       this.router.navigateByUrl('/pages');
     }
   }

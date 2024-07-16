@@ -24,7 +24,7 @@
             "tsConfig": "projects/admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/admin/src/favicon.ico",
+              "projects/admin/src/favicon.png",
               "projects/admin/src/assets"
             ],
             "styles": ["projects/admin/src/styles.scss"],
@@ -79,7 +79,7 @@
             "tsConfig": "projects/admin/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/admin/src/favicon.ico",
+              "projects/admin/src/favicon.png",
               "projects/admin/src/assets"
             ],
             "styles": ["projects/admin/src/styles.scss"],
@@ -109,7 +109,7 @@
             "tsConfig": "projects/website/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/website/src/favicon.ico",
+              "projects/website/src/favicon.png",
               "projects/website/src/assets"
             ],
             "styles": ["projects/website/src/styles.scss"],
@@ -164,7 +164,7 @@
             "tsConfig": "projects/website/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/website/src/favicon.ico",
+              "projects/website/src/favicon.png",
               "projects/website/src/assets"
             ],
             "styles": ["projects/website/src/styles.scss"],

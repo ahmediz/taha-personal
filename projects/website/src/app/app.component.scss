@@ -16,9 +16,18 @@
         height: 100px;
         background: transparent url("../assets/images/left-arrow.png") no-repeat !important;
         background-size: contain !important;
+
+        @media all and (max-width:1024px) {
+          width: 50px;
+          height: 50px;
+        }
       }
       .owl-next {
         transform: scaleX(-1);
+      }
+
+      @media screen and (max-width: 602px) {
+        padding: 0 15px;
       }
     }
   }
@@ -38,6 +47,7 @@
   p {
     font-size: 16px;
     max-width: 600px;
+    padding: 0 15px;
   }
 }
 
@@ -47,6 +57,13 @@
   font-family: "Kansas";
   font-weight: 900;
   font-size: 42px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 32px;
+  }
+  @media screen and (max-width: 602px) {
+    font-size: 24px;
+  }
 
   span {
     background: black;
@@ -79,6 +96,19 @@
     text-transform: uppercase;
     &::before {
       -webkit-text-stroke: 0.3em white;
+
+      @media screen and (max-width: 1024px) {
+        -webkit-text-stroke: 0.3em white;
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      font-size: 75px;
+      margin-top: -30px;
+    }
+    @media screen and (max-width: 602px) {
+      font-size: 45px;
+      margin-top: -20px;
     }
   }
 }

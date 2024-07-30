@@ -1,7 +1,0 @@
-:host {
-  ::ng-deep {
-    main > *:not(router-outlet) {
-      @apply block pt-10 px-10;
-    }
-  }
-}
